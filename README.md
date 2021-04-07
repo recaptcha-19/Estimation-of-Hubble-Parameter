@@ -34,11 +34,33 @@ The distances to galaxies have been obtained from Cepheid data analyzed by the [
 The exact data used and a more detailed explanation of the procedure followed can be seen [here](https://github.com/recaptcha-19/Estimation-of-Hubble-Parameter/blob/master/experiment_tullyfisher_university.pdf)[^1].
 
 ## Procedure
-* Choose a specific galaxy with a known distance and open its IR image in [SAOImage DS9](https://sites.google.com/cfa.harvard.edu/saoimageds9).
+* Choose a specific galaxy and open its IR image in [SAOImage DS9](https://sites.google.com/cfa.harvard.edu/saoimageds9).
 * Set an appropriate region for the galaxy (to measure the signal, i.e. the apparent brightness) and multiple small surrounding regions (to measure the noise which will be subtracted) as shown in the image. 
+
 <p align="center">
   <img src="https://github.com/recaptcha-19/Estimation-of-Hubble-Parameter/blob/master/galaxy_regions.png" />
 </p>
+
+* Open the FITS containing radio data and from its plot on surface brightness vs velocity shown below, fit multiple Gaussian curves and obtain its FWHM as an estimate of its rotational velocity. Obtain a weighted average velocity with the weights being the brightness values; this is the velocity with which the galaxy moves away from earth.
+
+<p align="center">
+  <img src="https://github.com/recaptcha-19/Estimation-of-Hubble-Parameter/blob/master/Multiple_gaussian_fit.png" />
+</p>
+
+* Obtain a best fitting line that represents the Tully-Fisher relation for known galaxies. 
+* For galaxies with unknown distances, use the best fit and known flux density values to get the distance, and using the known values of receding velocities, produce a best fit line and estimate the Hubble parameter.
+
+## Description of Files
+
+* `galaxy.py` is a module that has a class `galaxy` that stores information on each galaxy. Its methods `velocity_calculator` and `lum_density_calculator` are used to estimate the receding velocity and the flux density (if distance is unknown) or luminosity density (if distance is known) to different galaxies. 
+* `luminosity_velocity_finder.py` is used to find the luminosity density (W/Hz) and receding velocity to galaxies with known distances.
+* `rotational_velocity_finder` performs a multiple Gaussian fit on the hydrogen line surface brightness data obtained from the radio FITS images of galaxies and estimates their rotational velocities.
+* `plots.py` obtains the Tully-Fisher relation for a bunch of galaxies and estimates the Hubble parameter by calculating distances to two galaxies - NGC 2903 and NGC 628. 
+
+## Remarks
+
+* The distance to only two galaxies was found from this procedure as it is not feasible and time consuming to perform the entire procedure on multiple galaxies (unless a way to automate it is found) or if the hydrogen line surface brightness data is directly available. 
+* Due to this, the Hubble constant was estimated to be around 26 km/s/Mpc, which is quite away from the actual value of 72 km/s/Mpc. Efforts shall be made to include more galaxy data and refine the obtained value in future. 
 
 
 
