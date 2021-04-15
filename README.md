@@ -54,7 +54,7 @@ The exact data used and a more detailed explanation of the procedure followed ca
 
 * `galaxy.py` is a module that has a class `galaxy` that stores information on each galaxy. Its methods `velocity_calculator` and `lum_density_calculator` are used to estimate the receding velocity and the flux density (if distance is unknown) or luminosity density (if distance is known) to different galaxies. 
 * `luminosity_velocity_finder.py` is used to find the luminosity density (W/Hz) and receding velocity to galaxies with known distances.
-* `rotational_velocity_finder` performs a multiple Gaussian fit on the hydrogen line surface brightness data obtained from the radio FITS images of galaxies and estimates their rotational velocities.
+* `rotational_velocity_finder.py` performs a multiple Gaussian fit on the hydrogen line surface brightness data obtained from the radio FITS images of galaxies and estimates their rotational velocities.
 * `plots.py` obtains the Tully-Fisher relation for a bunch of galaxies and estimates the Hubble parameter by calculating distances to two galaxies - NGC 2903 and NGC 628. 
 
 ## Remarks
